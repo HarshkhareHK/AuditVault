@@ -1,26 +1,70 @@
-#Overview
-AuditVault is a full-stack digital ecosystem designed to transition traditional accounting practices into scalable, digital-first enterprises. It solves the industry’s biggest bottlenecks: disorganized document collection, data security risks, and manual deadline management.
+Database Schema: The "Smart-Firm" Core
+The backend is designed using a relational structure (PostgreSQL) to ensure data integrity between clients, their filings, and the actual files stored in the cloud.
 
-Core Features
-Secure Document Vault: AES-256 encrypted storage with folder-level organization for multi-year tax filings.
+1. Users Table (CAs & Clients)
+id: UUID (Primary Key)
 
-Compliance Engine: Automated WhatsApp/Email notification system triggered by a dynamic tax calendar (GST, ITR, Audit).
+role: Enum (admin_ca, staff_assistant, client)
 
-Client Progress Tracker: A Kanban-style dashboard for clients to see the real-time status of their filings.
+frn_number: String (Required for CAs)
 
-Interactive Financial Tools: Lead-generating calculators for Old vs. New Tax Regimes and GST late fees.
+pan_gstin: String (Unique identifier for clients)
 
-Regulatory Guardrails: Built-in ICAI-compliant disclaimers and Firm Registration Number (FRN) architecture.
+mfa_enabled: Boolean (Security requirement)
 
-One-Click Payments: Integrated payment gateway for automated fee collection before document release.
+2. Compliance_Projects Table
+This table tracks the "Status" of a specific task (e.g., "Audit 2025").
 
-#Tech Stack
-Frontend: Next.js 15 (App Router), Tailwind CSS, Framer Motion.
+id: UUID
 
-Backend: Node.js with Supabase (PostgreSQL).
+client_id: UUID (Foreign Key)
 
-Storage: AWS S3 (Server-Side Encryption) / Google Cloud Storage.
+category: Enum (GST, Income_Tax, Audit, MCA)
 
-Auth: Clerk or Auth0 with Multi-Factor Authentication (MFA).
+fiscal_year: String (e.g., "2025-26")
 
-Automation: n8n or Make.com for compliance alerts.
+status: Enum (Pending_Docs, In_Review, Query_Raised, Filed)
+
+deadline: Timestamp
+
+3. Document_Vault Table
+Tracks files stored in AWS S3/Google Cloud.
+
+id: UUID
+
+project_id: UUID (Foreign Key)
+
+file_name: String
+
+s3_url: String (Encrypted Link)
+
+is_verified: Boolean (CA approval status)
+
+uploaded_at: Timestamp
+
+Operational Logic: The "Document-Status" Flow
+To make the "Smart-Firm" efficient, the repository uses a State-Machine logic for document handling:
+
+State: Pending_Docs
+
+System checks the Document_Vault for required files (e.g., Bank Statement).
+
+If missing, an automated trigger via n8n/Make.com sends a WhatsApp reminder to the client.
+
+State: In_Review
+
+Triggered when the client uploads all required files.
+
+The CA receives a dashboard notification to start the work.
+
+State: Query_Raised
+
+If the CA finds an error, they flag a specific document.
+
+The client receives an "Action Required" alert on their mobile dashboard.
+
+State: Filed
+
+Once the work is done, the CA uploads the final Acknowledgement (ACK).
+
+The status updates to "Filed" and the client can now download their certificate
