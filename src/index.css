@@ -124,6 +124,10 @@ button {
   padding: 12px 24px;
   border-radius: var(--radius);
   font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
   backdrop-filter: blur(10px);
 }
 

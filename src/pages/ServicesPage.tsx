@@ -23,10 +23,10 @@ const ServicesPage = () => {
                     </p>
 
                     <div className="hero-cta justify-center animate-fade-in" style={{ animationDelay: '0.4s' }}>
-                        <button className="btn-primary" style={{ backgroundColor: 'var(--orange)' }}>
+                        <button className="btn-primary" style={{ backgroundColor: 'var(--orange)', color: 'white' }}>
                             Explore Services Engine
                         </button>
-                        <button className="btn-outline" style={{ color: 'var(--dark)', borderColor: 'var(--dark)' }}>
+                        <button className="btn-primary flex items-center justify-center gap-2" style={{ backgroundColor: 'transparent', color: 'var(--dark)', border: '1px solid var(--dark)' }}>
                             Book Consultation
                         </button>
                     </div>
