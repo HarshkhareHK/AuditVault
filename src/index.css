@@ -3,15 +3,19 @@
 :root {
   --primary: #f36428;
   --primary-hover: #e25820;
-  --dark-bg: #1c2333; /* Background of the hero */
+  --orange: #f36428;
+  --dark: #1f2937;
+  --dark-bg: #1c2333;
+  /* Background of the hero */
   --header-bg: rgba(28, 35, 51, 0.95);
   --footer-bg: #1f232b;
   --light-bg: #f8f9fc;
+  --off-white: #fdfdfd;
   --text-dark: #1f2937;
   --text-light: #6b7280;
   --white: #ffffff;
   --green: #2ecc71;
-  --border-color: rgba(255,255,255,0.1);
+  --border-color: rgba(255, 255, 255, 0.1);
   --radius: 8px;
   --font-sans: 'Inter', sans-serif;
   --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
@@ -56,16 +60,45 @@ button {
   padding: 0 24px;
 }
 
-.text-center { text-align: center; }
-.flex { display: flex; }
-.items-center { align-items: center; }
-.justify-between { justify-content: space-between; }
-.justify-center { justify-content: center; }
-.flex-col { flex-direction: column; }
-.grid { display: grid; }
-.gap-4 { gap: 1rem; }
-.gap-6 { gap: 1.5rem; }
-.gap-8 { gap: 2rem; }
+.text-center {
+  text-align: center;
+}
+
+.flex {
+  display: flex;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.grid {
+  display: grid;
+}
+
+.gap-4 {
+  gap: 1rem;
+}
+
+.gap-6 {
+  gap: 1.5rem;
+}
+
+.gap-8 {
+  gap: 2rem;
+}
 
 /* Buttons */
 .btn-primary {
@@ -100,8 +133,15 @@ button {
 
 /* Animations */
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .animate-fade-in {

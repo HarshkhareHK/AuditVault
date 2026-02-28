@@ -1,4 +1,4 @@
-
+import { Link } from 'react-router-dom';
 import { AlertTriangle, Rocket, FileText, ChevronRight } from 'lucide-react';
 import './Services.css';
 
@@ -24,9 +24,9 @@ const Services = () => {
                             Our AI-driven response system analyzes notices and historical filings to provide rapid, compliant resolutions to tax authorities.
                         </p>
 
-                        <a href="#" className="card-link">
+                        <Link to="/services" className="card-link">
                             Get Help Now <ChevronRight size={16} />
-                        </a>
+                        </Link>
                     </div>
 
                     {/* Service Card 2 */}
@@ -41,9 +41,9 @@ const Services = () => {
                             From PAN/TAN registration to ROC filings, we handle the complex paperwork so you can focus on building your empire.
                         </p>
 
-                        <a href="#" className="card-link">
+                        <Link to="/services" className="card-link">
                             Explore Setup <ChevronRight size={16} />
-                        </a>
+                        </Link>
                     </div>
 
                     {/* Service Card 3 */}
@@ -58,9 +58,9 @@ const Services = () => {
                             Professional statutory and internal audits designed to strengthen your balance sheet and satisfy banking requirements.
                         </p>
 
-                        <a href="#" className="card-link">
+                        <Link to="/services" className="card-link">
                             Schedule Audit <ChevronRight size={16} />
-                        </a>
+                        </Link>
                     </div>
                 </div>
             </div>
