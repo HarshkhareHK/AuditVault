@@ -1,3 +1,5 @@
+#  AuditVault
+
 Database Schema: The "Smart-Firm" Core
 The backend is designed using a relational structure (PostgreSQL) to ensure data integrity between clients, their filings, and the actual files stored in the cloud.
 
