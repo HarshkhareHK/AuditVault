@@ -1,4 +1,11 @@
+<<<<<<< HEAD
 # 🏢 Jhansi Associates Website
+=======
+#  AuditVault
+
+Database Schema: The "Smart-Firm" Core
+The backend is designed using a relational structure (PostgreSQL) to ensure data integrity between clients, their filings, and the actual files stored in the cloud.
+>>>>>>> 99bbacf100c543b4d6c5786a9618c0f0825f9795
 
 ![Jhansi Associates Hero Preview](https://via.placeholder.com/1200x600.png?text=Jhansi+Associates+Hero+Preview)
 
