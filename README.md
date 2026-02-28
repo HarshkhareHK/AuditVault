@@ -1,70 +1,108 @@
-Database Schema: The "Smart-Firm" Core
-The backend is designed using a relational structure (PostgreSQL) to ensure data integrity between clients, their filings, and the actual files stored in the cloud.
+# 🏢 Jhansi Associates Website
 
-1. Users Table (CAs & Clients)
-id: UUID (Primary Key)
+![Jhansi Associates Hero Preview](https://via.placeholder.com/1200x600.png?text=Jhansi+Associates+Hero+Preview)
 
-role: Enum (admin_ca, staff_assistant, client)
+A modern, responsive, and highly-polished landing page built for **Jhansi Associates**—Chartered Accountants offering full-stack GST, Audit, and Virtual CFO services. This project is designed with a premium aesthetic featuring glassmorphism, dynamic scrolling marquees, and rich animations to highlight the firm's AI-driven tax strategies.
 
-frn_number: String (Required for CAs)
+---
 
-pan_gstin: String (Unique identifier for clients)
+## ✨ Features
 
-mfa_enabled: Boolean (Security requirement)
+- **Modern Hero Section**: High-conversion landing view with animated statistics cards demonstrating audit accuracy and compliance scores.
+- **Glassmorphism Design**: Elegant overlays and translucent components that provide a modern "premium" feel.
+- **Dynamic Marquee Ticker**: Continuous scrolling banner highlighting recent compliance changes, filing deadlines, and portal updates.
+- **Interactive Services Grid**: Service cards with aesthetic hover micro-animations mapped to core business offerings.
+- **Scroll-Aware Navigation**: A highly responsive header that transitions from transparent to solid upon scrolling.
+- **Vanilla CSS Animations**: All styling and animations utilize pure, optimized CSS without relying on heavy frameworks like Tailwind.
 
-2. Compliance_Projects Table
-This table tracks the "Status" of a specific task (e.g., "Audit 2025").
+---
 
-id: UUID
+## 🛠️ Tech Stack
 
-client_id: UUID (Foreign Key)
+- **Framework**: [React 18](https://react.dev/) + [TypeScript](https://www.typescriptlang.org/)
+- **Build Tool**: [Vite](https://vitejs.dev/)
+- **Styling**: Vanilla CSS (Global Design System with CSS Variables)
+- **Icons**: [Lucide React](https://lucide.dev/)
+- **Animations**: CSS Keyframes + [Framer Motion](https://www.framer.com/motion/) *(installed for future integrations)*
 
-category: Enum (GST, Income_Tax, Audit, MCA)
+---
 
-fiscal_year: String (e.g., "2025-26")
+## 🚀 Getting Started
 
-status: Enum (Pending_Docs, In_Review, Query_Raised, Filed)
+### Prerequisites
 
-deadline: Timestamp
+Make sure you have [Node.js](https://nodejs.org/) installed on your machine.
 
-3. Document_Vault Table
-Tracks files stored in AWS S3/Google Cloud.
+### Installation
 
-id: UUID
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/HarshkhareHK/AuditVault.git
+   cd AuditVault
+   ```
 
-project_id: UUID (Foreign Key)
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
 
-file_name: String
+3. **Start the development server:**
+   ```bash
+   npm run dev
+   ```
 
-s3_url: String (Encrypted Link)
+4. **View the application:**
+   Open your browser and navigate to `http://localhost:5173`
 
-is_verified: Boolean (CA approval status)
+### Building for Production
 
-uploaded_at: Timestamp
+To create a production-optimized build:
 
-Operational Logic: The "Document-Status" Flow
-To make the "Smart-Firm" efficient, the repository uses a State-Machine logic for document handling:
+```bash
+npm run build
+```
 
-State: Pending_Docs
+This command generates a `dist` folder containing the compiled static files ready for deployment.
 
-System checks the Document_Vault for required files (e.g., Bank Statement).
+---
 
-If missing, an automated trigger via n8n/Make.com sends a WhatsApp reminder to the client.
+## 📂 Project Structure
 
-State: In_Review
+```text
+AuditVault/
+├── src/
+│   ├── components/
+│   │   ├── Header.tsx      # Scroll-aware navigation bar
+│   │   ├── Header.css
+│   │   ├── Hero.tsx        # Main landing section with stats
+│   │   ├── Hero.css
+│   │   ├── Marquee.tsx     # Scrolling ticker for live updates
+│   │   ├── Marquee.css
+│   │   ├── Services.tsx    # Interactive service highlights grid
+│   │   ├── Services.css
+│   │   ├── Footer.tsx      # Global footer with contact links
+│   │   └── Footer.css
+│   ├── App.tsx             # Main application layout assembly
+│   ├── index.css           # Global styles and CSS design tokens
+│   ├── main.tsx            # React application entry point
+│   └── vite-env.d.ts
+├── public/                 # Static assets
+├── index.html              # HTML template
+├── package.json            # Project dependencies and scripts
+└── vite.config.ts          # Vite configuration
+```
 
-Triggered when the client uploads all required files.
+---
 
-The CA receives a dashboard notification to start the work.
+## 🎨 Design Philosophy
 
-State: Query_Raised
+The aesthetic approach for this application strictly avoids purely utility-driven styling (like Tailwind) in favor of semantic HTML and beautifully structured Vanilla CSS. This enables deep customization of micro-interactions and robust maintainability across the component ecosystem. Core brand colors utilized:
+- **Navy Blue**: `var(--dark-bg)` -> `#1c2333`
+- **Vibrant Orange**: `var(--primary)` -> `#f36428`
+- **Trust Green**: `var(--green)` -> `#2ecc71`
 
-If the CA finds an error, they flag a specific document.
+---
 
-The client receives an "Action Required" alert on their mobile dashboard.
+## 📄 License
 
-State: Filed
-
-Once the work is done, the CA uploads the final Acknowledgement (ACK).
-
-The status updates to "Filed" and the client can now download their certificate
+© 2024 Jhansi Associates. Licensed Chartered Accountants. All Rights Reserved.
