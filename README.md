@@ -1,4 +1,4 @@
-Overview
+#Overview
 AuditVault is a full-stack digital ecosystem designed to transition traditional accounting practices into scalable, digital-first enterprises. It solves the industry’s biggest bottlenecks: disorganized document collection, data security risks, and manual deadline management.
 
 Core Features
@@ -14,7 +14,7 @@ Regulatory Guardrails: Built-in ICAI-compliant disclaimers and Firm Registration
 
 One-Click Payments: Integrated payment gateway for automated fee collection before document release.
 
-Tech Stack
+#Tech Stack
 Frontend: Next.js 15 (App Router), Tailwind CSS, Framer Motion.
 
 Backend: Node.js with Supabase (PostgreSQL).
