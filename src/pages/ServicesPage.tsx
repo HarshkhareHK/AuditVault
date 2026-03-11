@@ -76,7 +76,7 @@ const ServicesPage = () => {
                         </div>
 
                         {/* Service Card 2 */}
-                        <div className="engine-card active-card" style={{ borderTop: '4px solid var(--orange)' }}>
+                        <div className="engine-card">
                             <div className="engine-icon-wrapper bg-orange-light">
                                 <Briefcase className="text-orange" size={24} />
                             </div>
@@ -98,7 +98,7 @@ const ServicesPage = () => {
                                 <span className="starting-from">Starting from</span>
                                 <span className="price">₹2,499</span>
                             </div>
-                            <button className="btn-primary w-full" style={{ backgroundColor: 'var(--orange)' }}>Book Now</button>
+                            <button className="btn-dark w-full">Book Now</button>
                         </div>
 
                         {/* Service Card 3 */}
